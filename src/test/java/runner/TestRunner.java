@@ -9,7 +9,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 @RunWith(Cucumber.class)
 //@CucumberOptions(features = "featureFiles", glue = "stepdefinition" )
-@CucumberOptions(features = "src/test/resources/featureFiles", glue = "stepdefinition")
+@CucumberOptions(features = "src/test/resources/featureFiles/Address.feature", glue = "stepDefintionAddressBook")
 public class TestRunner {
 
 }

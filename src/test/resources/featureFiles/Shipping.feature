@@ -1,15 +1,15 @@
+Feature: Customer Registration
 
-Feature: Shipping Details of Customers
-  I want to check and verify shipping details of customers
-
-  
-  Scenario Outline: check and verify shipping details of customers
-    Given I can see shipment Details for Customers
-    When I click on <shipmentId> 
-    Then I should be able to see respective name "<CustomerName>" 
-
+@ModeOfTrasport
+  Scenario Outline: Validation the calculate the total shipping cost of the cargo based on weight , mode of trasport and type of customer
+    Given I am able to load the Cargo Shipping Cost Calculation from the given URL
+    When I am able to fill <Weight>,<TrasportMode> and <PremiumCustomer> in Cargo Shipping Cost Calculation form and calculate
+    Then I should able to see the <ExpectedResult> on Screen
     Examples: 
-      | shipmentId  | CustomerName | DepartureDate  | ArrivalDate |
-      | 6543217     | Maya         | 03/12/2017     |  03/13/2017 |
-      | 7465328     | Sri          | 06/01/2017     |  06/03/2017 |
-      | 9987653     | Suruthi      | 11/21/2017     |	 11/22/2017 |
+    | Weight | TrasportMode | PremiumCustomer | ExpectedResult																|
+    | 100    | Air  				| No  						|Dear Customer, your total shipping cost is $100|
+ 		| 100    | Air  				| Yes  						|Dear Customer, your total shipping cost is $88	|
+ 		| 100    | Road  				| No  						|Dear Customer, your total shipping cost is $50	|
+  	| 100    | Road  				| Yes  						|Dear Customer, your total shipping cost is $44	|
+   	| 100    | Ship  				| No  						|Dear Customer, your total shipping cost is $70	|
+    | 100    | Ship  				| Yes  						|Dear Customer, your total shipping cost is $61.6	|
